@@ -15,6 +15,9 @@ const UserForm =  ({user, isCreate, editCallback}) => {
 
     const handlePost = (e) => {
         e.preventDefault();
+        if (newName === "" || newAge === null || url === "" || newHobbies === "" || newDepartment === "") {
+            console.log("Error");
+        }
         const newUser = {
             name: newName,
             age: newAge,
@@ -23,13 +26,16 @@ const UserForm =  ({user, isCreate, editCallback}) => {
             department: newDepartment,
         };
 
-        setName(""); setAge(-1); setHobbies(""); setDepartment(""); setUrl("");
+        setName(""); setAge(null); setHobbies(""); setDepartment(""); setUrl("");
 
         POST_USER(newUser);
     }
 
     const handlePut = (e) => {
         e.preventDefault();
+        if (newAge === null || url === "" || newHobbies === "" || newDepartment === "") {
+            console.log("Error");
+        }
         const editedUser = {
             name: newName,
             age: newAge,
@@ -38,7 +44,7 @@ const UserForm =  ({user, isCreate, editCallback}) => {
             department: newDepartment,
         };
 
-        setName(""); setAge(-1); setHobbies(""); setDepartment(""); setUrl("");
+        setName(""); setAge(null); setHobbies(""); setDepartment(""); setUrl("");
 
         PUT_USER(editedUser);
         editCallback(editedUser.name);
